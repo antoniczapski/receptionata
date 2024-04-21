@@ -36,5 +36,6 @@ Currently, in its initial stages, this project represents a collaboration betwee
 
 **Marcin Mierzejewski**
 
-Contact
+## Contact
+
 For more information, to provide feedback, or to get involved, please contact us at 317214@uwr.edu.pl
