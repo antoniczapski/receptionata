@@ -1,0 +1,8 @@
+.vscode
+.env
+
+__pycache__
+.venv
+
+# for running the app locally using Docker containers
+.chroma
