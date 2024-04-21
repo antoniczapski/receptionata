@@ -1,0 +1,19 @@
+## TODO
+- how to load PDF from the web?
+- how to load only the relevant part of the HTML?
+- how to split the text?
+    - is generic splitting enough?
+    - use LLM to determine chunks of coherent content?
+- how to test the generated outputs?
+- create query template
+    - perhaps use XML-like structure
+- how to use OpenAI API?
+- env vars
+    - DB URL
+- dockerize
+    - env vars
+    - only ChromaDB for now
+    - then API as well
+- [later on, maybe] create an API in Python
+- LLM interface to be able to run local LLM as well as use external API
+- switch to open-source wherever possible
