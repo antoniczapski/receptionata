@@ -1,0 +1,9 @@
+services:
+  chroma:
+    image: chromadb/chroma
+    hostname: chroma
+    ports:
+      - 1234:8000  # only for as long as the api is not containerized
+    environment:  # TODO: auth
+    volumes:
+      - .chroma/:/chroma/chroma
