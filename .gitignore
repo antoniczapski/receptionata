@@ -1,0 +1,6 @@
+# editor-specific
+.vscode
+
+# local runtime
+.env
+.venv
