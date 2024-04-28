@@ -1,9 +1,3 @@
-# TODO: this is a workaround, requires `pip install pysqlite3-binary`
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-# -------------------------------------------------------------------
-
 import chromadb
 import langchain_chroma
 from langchain_openai import OpenAIEmbeddings
