@@ -1,6 +1,7 @@
-# editor-specific
+# editor
 .vscode
 
 # local runtime
+__pycache__
 .env
 .venv
