@@ -1,0 +1,8 @@
+services:
+  chroma:
+    image: chromadb/chroma
+    environment:  # TODO: auth
+    volumes:
+      - chroma/:/chroma/chroma
+    ports:
+      - 1234:8000
