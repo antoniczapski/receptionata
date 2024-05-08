@@ -3,5 +3,15 @@ services:
     image: chromadb/chroma
     volumes:
       - ./chroma/:/chroma/chroma/
+    # ports:
+    #   - 1234:8000
+
+  api:
+    build: ./api
     ports:
-      - 1234:8000
+      - 8000:8000
+    env_file:
+      - ./api/.env
+    depends_on:
+      chroma:
+        condition: service_started

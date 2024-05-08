@@ -40,4 +40,4 @@ if __name__ == "__main__":
     documents = text_splitter.split_documents(documents)
 
     chroma = get_chroma_client()
-    chroma.add_documents(documents)
+    # chroma.add_documents(documents)
