@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="top-part"></div>
+<div class="main-container">
+    <div class="agent-definition-box">
+        <div class="main-image-box">
+            <div></div>
+            <img class="main-agent-image" src="{{ url_for('static', filename='images/bot.png') }}" alt="Agent image">
+            <div></div>
+        </div>
+        <div class="normal-text">Retrieved information - <a href="https://www.gov.pl/web/rodzina/urlopy-i-zwolnienia-od-pracy">source</a></div>
+        <div class="agent-instructions-box">
+            <textarea id="agent-instructions-textarea" class="agent-instructions-textarea" readonly></textarea>
+        </div>
+        <div class="normal-text">Retrieved information - <a href="https://www.gov.pl/web/rodzina/urlopy-i-zwolnienia-od-pracy">source</a></div>
+        <div class="agent-instructions-box">
+            <textarea id="agent-instructions-textarea-2" class="agent-instructions-textarea" readonly></textarea>
+        </div>
+        <div class="normal-text">Retrieved information - <a href="https://www.gov.pl/web/rodzina/urlopy-i-zwolnienia-od-pracy">source</a></div>
+        <div class="agent-instructions-box">
+            <textarea id="agent-instructions-textarea-3" class="agent-instructions-textarea" readonly></textarea>
+        </div>
+    </div>
+    <div style="background-color: rgb(76,77,89)"></div>
+    <div class="chat-box">
+        <div id="chat" class="conversation-box"></div>
+        <div class="user-input">
+            <textarea id="prompt-textarea" class="user-message" placeholder="Message GPT..."></textarea>
+            <button id="send-button" class="send-button" onclick="sendMessage()" style="background-image: url({{ url_for('static', filename='images/arrow.png') }})"></button>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+{% endblock %}
