@@ -1,3 +1,5 @@
+import csv
+import os
 import pathlib
 
 import bs4
@@ -12,7 +14,7 @@ from chroma import get_chroma_client
 if __name__ == "__main__":
     load_dotenv()
 
-    DATA_DIR = pathlib.Path(__file__).parent / "data"
+    DATA_DIR = pathlib.Path(os.environ["DATA_DIR"]).resolve()
 
     # text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
     #     model_name="gpt-3.5-turbo",
@@ -25,9 +27,9 @@ if __name__ == "__main__":
     )
 
     documents = []
-    for pdf in map(str, DATA_DIR.glob("*.pdf")):
+    for pdf in map(str, DATA_DIR.glob("documents/*.pdf")):
         documents.extend(PDFMinerLoader(pdf).load())
-    for html in DATA_DIR.glob("*.html"):
+    for html in DATA_DIR.glob("documents/*.html"):
         loader = BSHTMLLoader(
             html,
             bs_kwargs=dict(
@@ -37,7 +39,14 @@ if __name__ == "__main__":
         )
         documents.extend(loader.load())
 
-    documents = text_splitter.split_documents(documents)
+    with open(DATA_DIR / "source-mapping.csv", "r") as source_mapping_csv_file:
+        source_mapping = {row["document_filename"]: row["source"]
+                          for row in csv.DictReader(source_mapping_csv_file)}
+    for doc in documents:
+        doc.metadata["source"] = source_mapping[pathlib.Path(doc.metadata["source"]).name]
+
+    chunks = text_splitter.split_documents(documents)
 
     chroma = get_chroma_client()
-    chroma.add_documents(documents)
+    # chroma.delete_collection()
+    # chroma.add_documents(chunks)
