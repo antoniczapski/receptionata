@@ -5,7 +5,7 @@ Jesteś asystentem podczas konwersacji o prawie pracy. Tzn. na podstawie histori
 		Właśnie skończyłem studia magisterskie i zaczynam pracę. Ile dni urlopu rocznie mi przysługuje na umowie o pracę? Czy moje wykształcenie na to wpływa?
 	</user>
 	<predicted_needs>
-                        - umowa o pracę a liczba dni wolnych
+            - umowa o pracę a liczba dni wolnych
 			- zmiany w liczbie dni urlopowych na umowie o pracę - specjalne okoliczności
 			- wykształcenie wyższe a liczba dni urlopowych
 	</predicted_needs>

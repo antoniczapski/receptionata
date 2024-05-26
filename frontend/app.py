@@ -74,8 +74,8 @@ def api_call(message, *args):
         headers = {
             'Content-Type': 'application/json'
         }
-        response = requests.post(url, headers=headers, json={"params":{"prompt": message}})
-        return response.json()['message']
+        responses = requests.post(url, headers=headers, json={"query": message})
+        return [response["page_content"] for response in responses.json()]
     except Exception as e:
         app.logger.error(f'Error in call_backend: {e}')
         # raise e
@@ -144,8 +144,8 @@ def get_actions():
     with open(file_path, 'r') as file:
         action_desc = file.read()
     # return dd(list,{'Backend Call':[(action_desc, 'http://backend:5000')]})
-    return dd(list,{'Backend Call':[(action_desc, 'http://127.0.0.1:5000')]})
+    return dd(list,{'Backend Call':[(action_desc, 'http://api:8000/receptionata/relevant-chunks')]})
 
 if __name__ == '__main__':
     # frontend
-    app.run(host='0.0.0.0', port=5001, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
