@@ -4,6 +4,9 @@ services:
     build: ./frontend
     ports:
       - "5000:5000"
+    environment:
+      - BACKEND_API_URL=${BACKEND_API_URL}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
     depends_on:
       - api
 
@@ -11,8 +14,10 @@ services:
     build: ./backend/api
     ports:
       - "8000:8000"
-    env_file:
-      - ./backend/api/.env
+    environment:
+      - CHROMA_HOSTNAME=${CHROMA_HOSTNAME}
+      - CHROMA_PORT=${CHROMA_PORT}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
     depends_on:
       - chroma
 
