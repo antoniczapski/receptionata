@@ -1,7 +1,9 @@
+import os
+
 from openai import OpenAI
 
 client = OpenAI(
-    api_key='sk-proj-3avcIlgYEA2Fgx2CGjsyT3BlbkFJkxtp0ruASyaI1qXXDiN4',
+    api_key=os.environ['OPENAI_API_KEY'],
 )
 
 def preprocess_messages(messegas):

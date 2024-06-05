@@ -8,6 +8,9 @@ import os
 from call_openai import call_openai, preprocess_messages
 
 
+BACKEND_API_URL = os.environ['BACKEND_API_URL']
+
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -144,7 +147,7 @@ def get_actions():
     with open(file_path, 'r') as file:
         action_desc = file.read()
     # return dd(list,{'Backend Call':[(action_desc, 'http://backend:5000')]})
-    return dd(list,{'Backend Call':[(action_desc, 'http://api:8000/receptionata/relevant-chunks')]})
+    return dd(list,{'Backend Call':[(action_desc, f'{BACKEND_API_URL}/receptionata/relevant-chunks')]})
 
 if __name__ == '__main__':
     # frontend
