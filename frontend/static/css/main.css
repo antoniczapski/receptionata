@@ -1,10 +1,13 @@
 :root {
-    --light-gray: rgb(76,77,89);
+    --light-gray: rgb(141, 141, 141);
+    --dark-gray: rgb(107, 107, 107);
+    --darker-gray: rgb(61, 61, 61);
+    --neutral: rgb(208, 208, 208);
 }
 
 body {
     margin: 0;
-    background-color: rgb(52,53,65);
+    background-color: var(--neutral);
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -20,7 +23,7 @@ body {
 
 .top-part {
     height: 55px;
-    border-bottom: 1px solid rgb(76,77,89);
+    border-bottom: 1px solid var(--light-gray);
 }
 .chat-box{
     height: 100%;
@@ -42,8 +45,8 @@ body {
 .user-input{
     height:52px;
     border-radius: 16px;
-    border: 1px solid rgb(76,77,89);
-    background-color: rgb(32,33,35);
+    border: 1px solid var(--light-gray);
+    background-color: var(--dark-gray);
     padding-left: 20px;
     padding-right: 13px;
     display: flex;
@@ -68,7 +71,7 @@ body {
 }
 
 .user-message::placeholder {
-    color: rgb(142,142,160);
+    color: rgb(208, 208, 208);
     font-family: intercom-font, "Helvetica Neue", "Apple Color Emoji", Helvetica, Arial, sans-serif;
 }
 
@@ -82,7 +85,7 @@ body {
     height:31px;
     border-radius: 8px;
     border: 1px solid rgb(55,56,57);
-    background-color: rgb(55,56,57);
+    background-color: var(--dark-gray);
     background-size: 20px;
     cursor: default;
     font-size: 16px;
@@ -93,7 +96,7 @@ body {
 
 .send-button:hover{
     border: 1px solid rgb(55,56,57);
-    background-color: rgb(32,33,35);
+    background-color: var(--light-gray);
 }
 
 .chat-message{
@@ -112,7 +115,7 @@ body {
 
 .chat-sender{
     font-size: 16px;
-    color: rgb(236,236,241);
+    color: var(--dark-gray);
     font-family: intercom-font, "Helvetica Neue", "Apple Color Emoji", Helvetica, Arial, sans-serif;
     font-weight: bold;
     margin-top: 15px;
@@ -121,7 +124,7 @@ body {
 
 .chat-message-text-user{
     font-size: 16px;
-    color: rgb(236,236,241);
+    color: --darker-gray;
     font-family: intercom-font, "Helvetica Neue", "Apple Color Emoji", Helvetica, Arial, sans-serif;
     margin-top: 10px;
     margin-bottom: 30px;
@@ -131,7 +134,7 @@ body {
 
 .chat-message-text-bot{
     font-size: 16px;
-    color: rgb(209,213,219);
+    color: --darker-gray;
     font-family: intercom-font, "Helvetica Neue", "Apple Color Emoji", Helvetica, Arial, sans-serif;
     margin-top: 10px;
     margin-bottom: 30px;
@@ -184,7 +187,7 @@ body {
 .agent-name-box{
     height:40px;
     border-radius: 16px;
-    border: 1px solid rgb(76,77,89);
+    border: 1px solid var(--light-gray);
     display: flex;
     align-items: center;
     overflow:hidden;
@@ -218,7 +221,7 @@ body {
 
 .agent-description-box{
     border-radius: 10px;
-    border: 1px solid rgb(76,77,89);
+    border: 1px solid var(--light-gray);
     display: flex;
     align-items: flex-start;
 }
@@ -233,7 +236,7 @@ body {
     margin-top: 7px;
     margin-bottom: 7px;
     font-size: 14px;
-    color: white;
+    color: red;
     font-family: intercom-font, "Helvetica Neue", "Apple Color Emoji", Helvetica, Arial, sans-serif;
     resize: none;
     overflow: hidden; /* Hide scrollbar */
@@ -255,14 +258,14 @@ body {
 .agent-instructions-box{
     height:200px;
     border-radius: 16px;
-    border: 1px solid rgb(76,77,89);
+    border: 1px solid var(--light-gray);
     display: flex;
     align-items: center;
     overflow:auto;
 }
 
 .agent-instructions-textarea{
-    height: 90%;
+    height: 500px;
     width: 100%;
     overflow-y: auto;
     margin: 0px;
@@ -271,7 +274,7 @@ body {
     margin-left: 10px;
     margin-top: 15px;
     font-size: 14px;
-    color: white;
+    color: var(--dark-gray);
     font-family: intercom-font, "Helvetica Neue", "Apple Color Emoji", Helvetica, Arial, sans-serif;
     resize: none;
 }
@@ -319,4 +322,42 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+/* Dropdown design */
+
+
+.dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;  /* Smooth transition for expanding and collapsing */
+    background-color: var(--neutral);  /* You can adjust the background color as needed */
+    padding: 0 18px;
+}
+
+.dropdown-btn {
+    background-color: var(--neutral);
+    color: black;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid var(--light-gray);  /* Separation line for aesthetics */
+}
+
+.dropdown-container a {
+    color: blue;
+    text-decoration: none;
+}
+
+.dropdown-container a:hover {
+    text-decoration: underline;
+}
+
+
+.indicator {
+    float: right;  /* Aligns the indicator to the right */
+    margin-left: 10px;  /* Adds some space between the text and the indicator */
 }

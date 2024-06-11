@@ -1,4 +1,5 @@
 FROM python:3.12-slim-bookworm
+# FROM python:3.10-slim-bullseye
 
 RUN apt update && apt -y upgrade \
     && apt install -y build-essential \

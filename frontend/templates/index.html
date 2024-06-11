@@ -15,6 +15,7 @@
             <img class="main-agent-image" src="{{ url_for('static', filename='images/bot.png') }}" alt="Agent image">
             <div></div>
         </div>
+<!--         
         <div class="normal-text">Retrieved information - <a href="https://www.gov.pl/web/rodzina/urlopy-i-zwolnienia-od-pracy">source</a></div>
         <div class="agent-instructions-box">
             <textarea id="agent-instructions-textarea" class="agent-instructions-textarea" readonly></textarea>
@@ -27,8 +28,32 @@
         <div class="agent-instructions-box">
             <textarea id="agent-instructions-textarea-3" class="agent-instructions-textarea" readonly></textarea>
         </div>
+         -->
+         <!-- Dropdown for the first chunk -->
+        <div class="dropdown-container">
+            <button class="dropdown-btn" disabled>Show Retrieved Information
+                <span class="indicator">-</span> </button>
+            <div class="dropdown-content">
+                <textarea readonly id="agent-instructions-textarea" class="agent-instructions-textarea"></textarea>
+            </div>
+        </div>
+        <!-- Repeat for other chunks -->
+        <div class="dropdown-container">
+            <button class="dropdown-btn" disabled>Show Retrieved Information
+                <span class="indicator">-</span> </button>
+            <div class="dropdown-content">
+                <textarea readonly id="agent-instructions-textarea-2" class="agent-instructions-textarea"></textarea>
+            </div>
+        </div>
+        <div class="dropdown-container">
+            <button class="dropdown-btn" disabled>Show Retrieved Information
+                <span class="indicator">-</span> </button>
+            <div class="dropdown-content">
+                <textarea readonly id="agent-instructions-textarea-3" class="agent-instructions-textarea"></textarea>
+            </div>
+        </div>
     </div>
-    <div style="background-color: rgb(76,77,89)"></div>
+    <div style="background-color: rgb(141,141,141)"></div>
     <div class="chat-box">
         <div id="chat" class="conversation-box"></div>
         <div class="user-input">

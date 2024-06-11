@@ -22,13 +22,36 @@ async function sendMessage() {
         displayMessage('assistant', response)
         conversationHistory.push({ sender: 'assistant', message: response });
 
-        document.getElementById('agent-instructions-textarea').value = backend_response[0];
-        document.getElementById('agent-instructions-textarea-2').value = backend_response[1];
-        document.getElementById('agent-instructions-textarea-3').value = backend_response[2];
+        // Update textareas and check their content to adjust dropdowns
+        const textAreas = [
+            document.getElementById('agent-instructions-textarea'),
+            document.getElementById('agent-instructions-textarea-2'),
+            document.getElementById('agent-instructions-textarea-3')
+        ];
+
+        backend_response.forEach((content, index) => {
+            const textarea = textAreas[index];
+            const dropdown = textarea.parentNode.parentNode;
+            const button = dropdown.querySelector('.dropdown-btn');
+            const indicator = button.querySelector('.indicator');
+            console.log(content);
+            textarea.value = content;
+
+            if (content.trim() === '') {
+                button.disabled = true;  // Disable the button if no content
+                indicator.textContent = '-';  // Set indicator to '-' for empty
+                textarea.parentNode.style.maxHeight = null;  // Close dropdown if it was open
+            } else {
+                button.disabled = false;  // Enable button if there's content
+                indicator.textContent = '+';  // Set indicator to '+' to show it's openable
+            }
+        });
+
     } catch (error) {
         console.error('Error:', error);
     }
 }
+
 
 function displayMessage(sender, message) {
     if (sender === 'system') {
@@ -98,4 +121,34 @@ textarea.addEventListener('keydown', function(event) {
         event.preventDefault();
         sendMessage();
     }
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var dropdowns = document.querySelectorAll('.dropdown-btn');
+    dropdowns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var dropdownContent = this.nextElementSibling;
+            var indicator = this.querySelector('.indicator'); // Get the indicator span
+
+            // Check if the clicked dropdown is already open
+            if (dropdownContent.style.maxHeight && dropdownContent.style.maxHeight !== "0px") {
+                // Close the dropdown
+                dropdownContent.style.maxHeight = null;
+                indicator.textContent = '+'; // Change indicator to '+'
+            } else {
+                // Close all other dropdowns
+                document.querySelectorAll('.dropdown-content').forEach(function(otherContent) {
+                    if (otherContent.style.maxHeight && otherContent.style.maxHeight !== "0px") {
+                        otherContent.style.maxHeight = null;
+                        otherContent.previousElementSibling.querySelector('.indicator').textContent = '+'; // Reset other indicators
+                    }
+                });
+
+                // Open the clicked dropdown and adjust to content size
+                dropdownContent.style.maxHeight = dropdownContent.scrollHeight + "px";
+                indicator.textContent = '-'; // Change indicator to '-'
+            }
+        });
+    });
 });

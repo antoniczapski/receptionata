@@ -5,7 +5,7 @@ import json
 from collections import defaultdict as dd
 import os
 
-from call_openai import call_openai, preprocess_messages
+from call_openai import call_openai, preprocess_messages, message_1, message_2, message_3
 
 
 BACKEND_API_URL = os.environ['BACKEND_API_URL']
@@ -82,7 +82,7 @@ def api_call(message, *args):
     except Exception as e:
         app.logger.error(f'Error in call_backend: {e}')
         # raise e
-        return ["response from backend - 1", "response from backend - 2", "response from backend - 3"]
+        return [message_1, message_2, message_3]
 
 def web_browsing(action_description, *args):
     raise NotImplementedError
